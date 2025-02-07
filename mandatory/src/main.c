@@ -10,7 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int main()
+int main(int argc, char **argv)
 {
-	return (0);
+	if (argc == 2)
+	{
+		// Your code here
+	}
+	else
+	{
+		// Your code here
+	}
 }
