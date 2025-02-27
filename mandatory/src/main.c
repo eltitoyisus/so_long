@@ -10,14 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../include/so_long.h"
+
 int main(int argc, char **argv)
 {
 	if (argc == 2)
 	{
-		// Your code here
-	}
-	else
-	{
-		// Your code here
+		printf("hola");
 	}
 }
