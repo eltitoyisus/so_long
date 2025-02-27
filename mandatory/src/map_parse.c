@@ -23,7 +23,7 @@ char	**copy_map(char **map, int rows)
 	i = 0;
 	while (i < rows)
 	{
-		new_map[i] = strdup(map[i]);
+		new_map[i] = ft_strdup(map[i]);
 		if (!new_map[i])
 		{
 			while (--i >= 0)
