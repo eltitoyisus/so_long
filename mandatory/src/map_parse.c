@@ -10,3 +10,106 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../include/so_long.h"
+
+char	**copy_map(char **map, int rows)
+{
+	char	**new_map;
+	int		i;
+
+	new_map = (char **)malloc(sizeof(char *) * rows);
+	if (!new_map)
+		return (NULL);
+	i = 0;
+	while (i < rows)
+	{
+		new_map[i] = strdup(map[i]);
+		if (!new_map[i])
+		{
+			while (--i >= 0)
+				free(new_map[i]);
+			free(new_map);
+			return (NULL);
+		}
+		i++;
+	}
+	return (new_map);
+}
+
+void	find_player(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < map->rows)
+	{
+		j = 0;
+		while (j < map->cols)
+		{
+			if (map->map[i][j] == 'P')
+			{
+				map->player_x = j;
+				map->player_y = i;
+				return ;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	move_on_paths(int x, int y, t_map *map)
+{
+	char	type;
+
+	if (x < 0 || y < 0 || x >= map->cols || y >= map->rows)
+		return ;
+	type = map->copy[y][x];
+	if (type == 'C')
+	{
+		map->c_check -= 1;
+		map->copy[y][x] = '1';
+	}
+	else if (type == 'E')
+	{
+		map->e_check -= 1;
+		map->copy[y][x] = '1';
+	}
+	else if (type == '0' || type == 'P')
+		map->copy[y][x] = '1';
+	else
+		return ;
+	move_on_paths(x + 1, y, map);
+	move_on_paths(x - 1, y, map);
+	move_on_paths(x, y + 1, map);
+	move_on_paths(x, y - 1, map);
+}
+
+void	check_valid_path(t_map *map)
+{
+	int	i;
+
+	map->c_check = map->c;
+	map->e_check = map->e;
+	find_player(map);
+	map->copy = copy_map(map->map, map->rows);
+	if (!map->copy)
+	{
+		write(2, "Error: COULDN'T LOAD MAP", 30);
+		exit(EXIT_FAILURE);
+	}
+	move_on_paths(map->player_x, map->player_y, map);
+	if (map->c_check != 0 || map->e_check >= map->e)
+	{
+		write(2, "NOT A VALID MAP", 15);
+		exit(EXIT_FAILURE);
+	}
+	i = 0;
+	while (i < map->rows)
+	{
+		free(map->copy[i]);
+		i++;
+	}
+	free(map->copy);
+}

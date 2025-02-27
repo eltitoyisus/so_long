@@ -12,10 +12,11 @@
 
 #include "../include/so_long.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
+	(void)argv;
 	if (argc == 2)
 	{
-		printf("hola");
+		printf("test");
 	}
 }
