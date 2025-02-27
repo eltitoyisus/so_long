@@ -13,16 +13,20 @@
 NAME = so_long
 RM = rm -rf
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -Ilibft -Iminilibx
+MLXFLAGS = 
+
+SRCS = mandatory/src/main.c        \
+		mandatory/src/movement.c   \
+		mandatory/src/map_parse.c
+
 OBJS = $(SRCS:.c=.o)
 
-SRCS = src/main.c        \
-		src/movement.c   \
-		src/map_parse.c
-
-all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	make -C minilibx -lm -lX11 -lXext
+
+all: $(NAME)
 
 clean:
 	$(RM) $(OBJS)
