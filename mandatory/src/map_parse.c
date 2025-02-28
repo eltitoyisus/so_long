@@ -96,7 +96,7 @@ void	check_valid_path(t_map *map)
 	map->copy = copy_map(map->map, map->rows);
 	if (!map->copy)
 	{
-		write(2, "Error: COULDN'T LOAD MAP", 30);
+		write(2, "Error: COULDN'T LOAD MAP", 25);
 		exit(EXIT_FAILURE);
 	}
 	move_on_paths(map->player_x, map->player_y, map);
