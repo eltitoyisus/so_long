@@ -59,4 +59,49 @@ typedef struct s_game
 	t_player	player;
 }	t_game;
 
+// MAP PARSE
+char	**copy_map(char **map, int rows);
+void	find_player(t_map *map);
+void	move_on_paths(int x, int y, t_map *map);
+void	check_valid_path(t_map *map);
+
+// KEYS
+int		key_hook(int keycode, t_map *map);
+
+// MOVEMENT
+void	move_a(t_map *map);
+void	move_s(t_map *map);
+void	move_d(t_map *map);
+void	move_w(t_map *map);
+
+// INIT MAP
+void	init_game(t_game *game);
+void	init_map(t_map *map);
+void	init_player(t_player *player);
+void	init_img(t_game *game);
+
+// DRAW MAP
+void	draw_map(t_game *game);
+void	draw_player(t_game *game);
+void	draw_collectibles(t_game *game);
+void	draw_exit(t_game *game);
+void	draw_images(t_game *game);
+void	draw_background(t_game *game);
+void	draw_game(t_game *game);
+
+
+// END MAP
+int		ft_close_map(t_map *map);
+
+// ERROR AND FREE
+void	ft_free_map(t_map *map);
+void	ft_free_game(t_game *game);
+
+
+// MAP NAME PARSE
+int		check_map(t_map *map);
+int		check_extension(char *file);
+int		check_args(int argc, char **argv);
+int		check_file(char *file);
+
 #endif
