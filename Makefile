@@ -31,9 +31,7 @@ minilibx/libmlx.a:
 	@$(MLX_MAKE)
 
 $(NAME): $(OBJS) libft/libft.a minilibx/libmlx.a
-	@$(CC) $(CFLAGS) $(OBJS)
-	@libft/libft.a minilibx/libmlx.a
-	@$(LIBFT) $(MINILIBX) $(MLXFLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) libft/libft.a minilibx/libmlx.a $(MLXFLAGS) -o $(NAME)
 
 all: $(NAME)
 
