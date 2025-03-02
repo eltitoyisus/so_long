@@ -3,3 +3,5 @@
 minilibx/Makefile.gen
 minilibx/test/Makfile.gen
 so_long
+.vscode
+*.o
