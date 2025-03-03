@@ -28,6 +28,7 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
+# define IMG_PXL 50
 # define WND_NAME "so_long"
 
 typedef struct s_map
