@@ -14,9 +14,20 @@
 
 int	main(int argc, char **argv)
 {
-	(void)argv;
+	t_map	map;
+
 	if (argc == 2)
 	{
-		printf("test");
+		map_initializer(&map, argv);
+		map_checker(&map);
+		map.mlx = mlx_init();
+		map.wnd = mlx_new_window(map.mlx, map.x
+				* IMG_PXL, map.y * IMG_PXL, WND_NAME);
+		file_to_image(&map);
+		map_printer(&map);
+		mlx_hook(map.wnd, 17, 0, ft_close_map, &map);
+		mlx_key_hook(map.wnd, key_hook, &map);
+		mlx_loop(map.mlx);
 	}
+	exit(EXIT_FAILURE);
 }
