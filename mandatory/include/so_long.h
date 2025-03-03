@@ -89,7 +89,6 @@ void	draw_images(t_game *game);
 void	draw_background(t_game *game);
 void	draw_game(t_game *game);
 
-
 // END MAP
 int		ft_close_map(t_map *map);
 
@@ -97,9 +96,8 @@ int		ft_close_map(t_map *map);
 void	ft_free_map(t_map *map);
 void	ft_free_game(t_game *game);
 
-
 // MAP NAME PARSE
-int		check_map(t_map *map);
+// int		check_map(t_map *map);
 int		check_extension(char *file);
 int		check_args(int argc, char **argv);
 int		check_file(char *file);
