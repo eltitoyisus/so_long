@@ -114,49 +114,15 @@ void	check_valid_path(t_map *map)
 	free(map->copy);
 }
 
-int ft_parse_map(char *file, t_map *map)
+int ft_parse_map(t_map *game)
 {
-	int		fd;
-	char	*line;
-	int		ret;
-
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
+	if (!check_extension(game) || !check_file(game) || !check_valid_map(game) || !check_valid_args(game) || !check_valid_path(game))
 	{
-		write(2, "Error: COULDN'T OPEN FILE", 25);
-		exit(EXIT_FAILURE);
+		write(2, "Error\nInvalid map\n", 2);
+		return (1);
 	}
-	ret = get_next_line(fd, &line);
-	map->cols = ft_strlen(line);
-	map->rows = 1;
-	while (ret > 0)
+	else if (check_extension(game) && check_file(game) && check_valid_map(game) && check_valid_args(game) && check_valid_path(game))
 	{
-		free(line);
-		ret = get_next_line(fd, &line);
-		map->rows++;
+		return (0);
 	}
-	free(line);
-	close(fd);
-	map->map = (char **)malloc(sizeof(char *) * map->rows);
-	if (!map->map)
-	{
-		write(2, "Error: COULDN'T LOAD MAP", 25);
-		exit(EXIT_FAILURE);
-	}
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-	{
-		write(2, "Error: COULDN'T OPEN FILE", 25);
-		exit(EXIT_FAILURE);
-	}
-	ret = 0;
-	while (ret < map->rows)
-	{
-		ret = get_next_line(fd, &line);
-		map->map[ret] = ft_strdup(line);
-		free(line);
-	}
-	close(fd);
-	check_valid_path(map);
-	return (0);
 }
