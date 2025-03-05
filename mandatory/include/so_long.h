@@ -110,7 +110,7 @@ void	ft_free_map(t_map *map);
 void	ft_free_game(t_game *game);
 
 // MAP NAME PARSE
-int ft_parse_map(char *file, t_map *map);
+int ft_parse_map(t_map *map);
 
 // int		check_map(t_map *map);
 int		check_extension(char *file);
