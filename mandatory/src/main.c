@@ -21,8 +21,7 @@ int	main(int argc, char **argv)
 		map_initializer(&map, argv);
 		map_checker(&map);
 		map.mlx = mlx_init();
-		map.wnd = mlx_new_window(map.mlx, map.x
-				* IMG_PXL, map.y * IMG_PXL, WND_NAME);
+		map.wnd = mlx_new_window(map.mlx, map.player_x * IMG_PXL, map.player_y * IMG_PXL, WND_NAME);
 		file_to_image(&map);
 		map_printer(&map);
 		mlx_hook(map.wnd, 17, 0, ft_close_map, &map);

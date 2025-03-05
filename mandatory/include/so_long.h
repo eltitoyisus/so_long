@@ -43,6 +43,8 @@ typedef struct s_map
 	int		e_check;
 	int		player_x;
 	int		player_y;
+	void	*mlx;
+	void	*wnd;
 }	t_map;
 
 typedef struct s_player
