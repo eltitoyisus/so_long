@@ -43,8 +43,6 @@ typedef struct s_map
 	int		e_check;
 	int		player_x;
 	int		player_y;
-	void	*mlx;
-	void	*wnd;
 }	t_map;
 
 typedef struct s_player
@@ -61,6 +59,18 @@ typedef struct s_game
 	t_img		img;
 	t_player	player;
 }	t_game;
+
+typedef struct s_img
+{
+	void	*img;
+	void	*empty;
+	void	*wall;
+	void	*exit;
+	void	*collect;
+	void	*player;
+	int		width;
+	int		height;
+}	t_img;
 
 // MAP PARSE
 char	**copy_map(char **map, int rows);
