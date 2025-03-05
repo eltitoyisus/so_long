@@ -116,15 +116,47 @@ void	check_valid_path(t_map *map)
 
 int ft_parse_map(char *file, t_map *map)
 {
-	map->map = ft_read_map(file, &map->rows, &map->cols, map);
+	int		fd;
+	char	*line;
+	int		ret;
+
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+	{
+		write(2, "Error: COULDN'T OPEN FILE", 25);
+		exit(EXIT_FAILURE);
+	}
+	ret = get_next_line(fd, &line);
+	map->cols = ft_strlen(line);
+	map->rows = 1;
+	while (ret > 0)
+	{
+		free(line);
+		ret = get_next_line(fd, &line);
+		map->rows++;
+	}
+	free(line);
+	close(fd);
+	map->map = (char **)malloc(sizeof(char *) * map->rows);
 	if (!map->map)
 	{
 		write(2, "Error: COULDN'T LOAD MAP", 25);
 		exit(EXIT_FAILURE);
 	}
-	find_player(map);
-	check_valid_path(map);
-	move_on_paths(map->player_x, map->player_y, map);
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+	{
+		write(2, "Error: COULDN'T OPEN FILE", 25);
+		exit(EXIT_FAILURE);
+	}
+	ret = 0;
+	while (ret < map->rows)
+	{
+		ret = get_next_line(fd, &line);
+		map->map[ret] = ft_strdup(line);
+		free(line);
+	}
+	close(fd);
 	check_valid_path(map);
 	return (0);
 }

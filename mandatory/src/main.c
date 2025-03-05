@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_game	game;
 
-	if (argc != 2)
+	if (argc != 2 || check_extension(argv[1]) || check_file(argv[1]))
 	{
 		ft_putstr_fd("Error\nInvalid number of arguments\n", 2);
 		return (1);

@@ -77,6 +77,7 @@ char	**copy_map(char **map, int rows);
 void	find_player(t_map *map);
 void	move_on_paths(int x, int y, t_map *map);
 void	check_valid_path(t_map *map);
+int		ft_parse_map(char *file, t_map *map);
 
 // KEYS
 int		key_hook(int keycode, t_map *map);
@@ -110,7 +111,6 @@ void	ft_free_map(t_map *map);
 void	ft_free_game(t_game *game);
 
 // MAP NAME PARSE
-int ft_parse_map(char *file, t_map *map);
 
 // int		check_map(t_map *map);
 int		check_extension(char *file);
