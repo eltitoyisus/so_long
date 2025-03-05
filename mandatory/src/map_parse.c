@@ -114,7 +114,7 @@ void	check_valid_path(t_map *map)
 	free(map->copy);
 }
 
-int ft_parse_map(t_map *game)
+int ft_parse_map(t_game *game)
 {
 	if (!check_extension(game) || !check_file(game) || !check_valid_map(game) || !check_valid_args(game) || !check_valid_path(game))
 	{

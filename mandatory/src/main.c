@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	init_map(&game.map);
-	if (ft_parse_map(argv[1], &game.map))
+	if (ft_parse_map(&game))
 	{
 		ft_putstr_fd("Error\nInvalid map\n", 2);
 		return (1);
