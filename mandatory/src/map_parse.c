@@ -113,3 +113,12 @@ void	check_valid_path(t_map *map)
 	}
 	free(map->copy);
 }
+
+int ft_parse_map(char *file, t_map *map)
+{
+	find_player(map);
+	check_valid_path(map);
+	move_on_paths(map->player_x, map->player_y, map);
+	check_valid_path(map);
+	return (0);
+}
