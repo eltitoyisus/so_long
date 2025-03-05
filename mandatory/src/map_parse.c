@@ -114,8 +114,14 @@ void	check_valid_path(t_map *map)
 	free(map->copy);
 }
 
-int ft_parse_map(t_map *map)
+int ft_parse_map(char *file, t_map *map)
 {
+	map->map = ft_read_map(file, &map->rows, &map->cols, map);
+	if (!map->map)
+	{
+		write(2, "Error: COULDN'T LOAD MAP", 25);
+		exit(EXIT_FAILURE);
+	}
 	find_player(map);
 	check_valid_path(map);
 	move_on_paths(map->player_x, map->player_y, map);
