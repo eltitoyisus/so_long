@@ -60,7 +60,7 @@ typedef struct s_game
 	t_player	player;
 }	t_game;
 
-typedef struct s_img
+typedef struct s_image
 {
 	void	*img;
 	void	*empty;
@@ -70,7 +70,7 @@ typedef struct s_img
 	void	*player;
 	int		width;
 	int		height;
-}	t_img;
+}	t_image;
 
 // MAP PARSE
 char	**copy_map(char **map, int rows);
