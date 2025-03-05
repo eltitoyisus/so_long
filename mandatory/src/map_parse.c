@@ -114,14 +114,14 @@ void	check_valid_path(t_map *map)
 	free(map->copy);
 }
 
-int ft_parse_map(t_game *game)
+int ft_parse_map(t_map *map)
 {
-	if (!check_extension(game) || !check_file(game) || !check_valid_map(game) || !check_valid_args(game) || !check_valid_path(game))
+	if (!check_extension(game.map) || !check_file(game.map) || !check_valid_map(game.map) || !check_valid_args(game.map) || !check_valid_path(game.map))
 	{
 		write(2, "Error\nInvalid map\n", 2);
 		return (1);
 	}
-	else if (check_extension(game) && check_file(game) && check_valid_map(game) && check_valid_args(game) && check_valid_path(game))
+	else if (check_extension(game.map) && check_file(game.map) && check_valid_map(game.map) && check_valid_args(game.map) && check_valid_path(game.map))
 	{
 		return (0);
 	}
