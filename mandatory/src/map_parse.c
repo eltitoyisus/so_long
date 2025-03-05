@@ -114,7 +114,7 @@ void	check_valid_path(t_map *map)
 	free(map->copy);
 }
 
-int ft_parse_map(char *file, t_map *map)
+int ft_parse_map(t_map *map)
 {
 	find_player(map);
 	check_valid_path(map);
