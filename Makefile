@@ -21,7 +21,15 @@ MLXFLAGS = -lm -lX11 -lXext
 
 SRCS = $(SRC_DIR)main.c        \
 		$(SRC_DIR)movement.c   \
-		$(SRC_DIR)map_parse.c
+		$(SRC_DIR)map_parse.c	\
+		$(SRC_DIR)convert_image.c \
+		$(SRC_DIR)draw_map.c \
+		$(SRC_DIR)end_map.c \
+		$(SRC_DIR)error.c \
+		$(SRC_DIR)generate_game.c \
+		$(SRC_DIR)init_map.c \
+		$(SRC_DIR)keys.c \
+		$(SRC_DIR)validate_name.c
 
 OBJS = $(SRCS:.c=.o)
 

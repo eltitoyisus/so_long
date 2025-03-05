@@ -40,9 +40,9 @@ void	init_player(t_player *player)
 
 void	init_img(t_game *game)
 {
-	game->img.img = mlx_xpm_file_to_image(game->mlx, "textures/ground.xpm", &game->img.width, &game->img.height);
-	game->img.collectible = mlx_xpm_file_to_image(game->mlx, "textures/collectible.xpm", &game->img.width, &game->img.height);
-	game->img.exit = mlx_xpm_file_to_image(game->mlx, "textures/exit.xpm", &game->img.width, &game->img.height);
-	game->img.player = mlx_xpm_file_to_image(game->mlx, "textures/player.xpm", &game->img.width, &game->img.height);
-	game->img.wall = mlx_xpm_file_to_image(game->mlx, "textures/wall.xpm", &game->img.width, &game->img.height);
+	game->image.img = mlx_xpm_file_to_image(game->mlx, "textures/ground.xpm", &game->image.width, &game->image.height);
+	game->image.collect = mlx_xpm_file_to_image(game->mlx, "textures/collectible.xpm", &game->image.width, &game->image.height);
+	game->image.exit = mlx_xpm_file_to_image(game->mlx, "textures/exit.xpm", &game->image.width, &game->image.height);
+	game->image.player = mlx_xpm_file_to_image(game->mlx, "textures/player.xpm", &game->image.width, &game->image.height);
+	game->image.wall = mlx_xpm_file_to_image(game->mlx, "textures/wall.xpm", &game->image.width, &game->image.height);
 }

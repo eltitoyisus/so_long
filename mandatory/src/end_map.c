@@ -12,11 +12,11 @@
 
 #include "../include/so_long.h"
 
-int ft_close_map(t_map *map)
+int ft_close_map(t_game *game)
 {
-	ft_free_map(map);
-	ft_free_game(&map->game);
-	exit(0);
-	return (0);
+    ft_free_map(&game->map);
+    ft_free_game(game);
+    exit(0);
+    return (0);
 }
 

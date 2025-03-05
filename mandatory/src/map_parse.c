@@ -86,43 +86,41 @@ void	move_on_paths(int x, int y, t_map *map)
 	move_on_paths(x, y - 1, map);
 }
 
-void	check_valid_path(t_map *map)
+int	check_valid_path(t_map *map)
 {
-	int	i;
+    int	i;
 
-	map->c_check = map->c;
-	map->e_check = map->e;
-	find_player(map);
-	map->copy = copy_map(map->map, map->rows);
-	if (!map->copy)
-	{
-		write(2, "Error: COULDN'T LOAD MAP", 25);
-		exit(EXIT_FAILURE);
-	}
-	move_on_paths(map->player_x, map->player_y, map);
-	if (map->c_check != 0 || map->e_check >= map->e)
-	{
-		write(2, "NOT A VALID MAP", 15);
-		exit(EXIT_FAILURE);
-	}
-	i = 0;
-	while (i < map->rows)
-	{
-		free(map->copy[i]);
-		i++;
-	}
-	free(map->copy);
+    map->c_check = map->c;
+    map->e_check = map->e;
+    find_player(map);
+    map->copy = copy_map(map->map, map->rows);
+    if (!map->copy)
+    {
+        write(2, "Error: COULDN'T LOAD MAP", 25);
+        exit(EXIT_FAILURE);
+    }
+    move_on_paths(map->player_x, map->player_y, map);
+    if (map->c_check != 0 || map->e_check >= map->e)
+    {
+        write(2, "NOT A VALID MAP", 15);
+        exit(EXIT_FAILURE);
+    }
+    i = 0;
+    while (i < map->rows)
+    {
+        free(map->copy[i]);
+        i++;
+    }
+    free(map->copy);
+	return (0);
 }
 
-int ft_parse_map(t_map *map)
+int ft_parse_map(int argc, char **argv, t_map *map)
 {
-	if (!check_extension(game.map) || !check_file(game.map) || !check_valid_map(game.map) || !check_valid_args(game.map) || !check_valid_path(game.map))
-	{
-		write(2, "Error\nInvalid map\n", 2);
-		return (1);
-	}
-	else if (check_extension(game.map) && check_file(game.map) && check_valid_map(game.map) && check_valid_args(game.map) && check_valid_path(game.map))
-	{
-		return (0);
-	}
+    if (!check_extension(map->map[0]) || !check_file(map->map[0]) || !check_args(argc, argv) || !check_valid_path(map))
+    {
+        write(2, "Error\nInvalid map\n", 2);
+        return (1);
+    }
+    return (0);
 }

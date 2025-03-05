@@ -30,11 +30,11 @@ void ft_free_map(t_map *map)
 void	ft_free_game(t_game *game)
 {
 	ft_free_map(&game->map);
-	free(game->img.img);
-	free(game->img.collectible);
-	free(game->img.exit);
-	free(game->img.player);
-	free(game->img.wall);
+	free(game->image.img);
+	free(game->image.collect);
+	free(game->image.exit);
+	free(game->image.player);
+	free(game->image.wall);
 	free(game->mlx);
 	free(game->win);
 }

@@ -12,20 +12,20 @@
 
 #include "../include/so_long.h"
 
-int key_hook(int keycode, t_map *map)
+int key_hook(int keycode, t_game *game)
 {
-	find_player(map);
-	if (keycode == KEY_ESC)
-		return(ft_close_map(map));
-	else if (map->exit == 1)
-		return (0);
-	else if (keycode == KEY_A)
-		move_a(map);
-	else if (keycode == KEY_S)
-		move_s(map);
-	else if (keycode == KEY_D)
-		move_d(map);
-	else if (keycode == KEY_W)
-		move_w(map);
-	return (0);
+    find_player(&game->map);
+    if (keycode == KEY_ESC)
+        return(ft_close_map(game));
+    else if (game->map.e_check == 1)
+        return (0);
+    else if (keycode == KEY_A)
+        move_a(&game->map);
+    else if (keycode == KEY_S)
+        move_s(&game->map);
+    else if (keycode == KEY_D)
+        move_d(&game->map);
+    else if (keycode == KEY_W)
+        move_w(&game->map);
+    return (0);
 }

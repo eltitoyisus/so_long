@@ -24,24 +24,20 @@ int	check_extension(char *file)
 
 int	check_file(char *file)
 {
-	int		fd;
-	int		ret;
-	char	*line;
+    int		fd;
+    char	*line;
 
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		return (0);
-	ret = get_next_line(fd, &line);
-	while (ret > 0)
-	{
-		free(line);
-		ret = get_next_line(fd, &line);
-	}
-	free(line);
-	close(fd);
-	if (ret < 0)
-		return (0);
-	return (1);
+    fd = open(file, O_RDONLY);
+    if (fd < 0)
+        return (0);
+    line = get_next_line(fd);
+    while (line)
+    {
+        free(line);
+        line = get_next_line(fd);
+    }
+    close(fd);
+    return (1);
 }
 
 int	check_args(int argc, char **argv)
