@@ -29,7 +29,8 @@ SRCS = $(SRC_DIR)main.c        \
 		$(SRC_DIR)generate_game.c \
 		$(SRC_DIR)init_map.c \
 		$(SRC_DIR)keys.c \
-		$(SRC_DIR)validate_name.c
+		$(SRC_DIR)validate_name.c \
+		$(SRC_DIR)is_playable.c
 
 OBJS = $(SRCS:.c=.o)
 
