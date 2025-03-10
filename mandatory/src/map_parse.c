@@ -86,9 +86,9 @@ void	move_on_paths(int x, int y, t_map *map)
 	move_on_paths(x, y - 1, map);
 }
 
-int	check_valid_path(t_map *map)
+int check_valid_path(t_map *map)
 {
-    int	i;
+    int i;
 
     map->c_check = map->c;
     map->e_check = map->e;
@@ -96,14 +96,17 @@ int	check_valid_path(t_map *map)
     map->copy = copy_map(map->map, map->rows);
     if (!map->copy)
     {
-        write(2, "Error: COULDN'T LOAD MAP", 25);
-        exit(EXIT_FAILURE);
+        printf("Error: COULDN'T LOAD MAP\n");
+        return (1);
     }
     move_on_paths(map->player_x, map->player_y, map);
     if (map->c_check != 0 || map->e_check >= map->e)
     {
-        write(2, "NOT A VALID MAP", 15);
-        exit(EXIT_FAILURE);
+        printf("NOT A VALID MAP\n");
+        for (i = 0; i < map->rows; i++)
+            free(map->copy[i]);
+        free(map->copy);
+        return (1);
     }
     i = 0;
     while (i < map->rows)
@@ -112,15 +115,32 @@ int	check_valid_path(t_map *map)
         i++;
     }
     free(map->copy);
-	return (0);
+    return (0);
 }
 
 int ft_parse_map(int argc, char **argv, t_map *map)
 {
-    if (!check_extension(map->map[0]) || !check_file(map->map[0]) || !check_args(argc, argv) || !check_valid_path(map))
+    printf("Parsing map with argc: %d, argv[1]: %s\n", argc, argv[1]);
+    if (!check_extension(argv[1]))
+	{
+		printf("Invalid file extension\n");
+		return (1);
+	}
+    if (!check_file(argv[1]))
     {
-        write(2, "Error\nInvalid map\n", 2);
+        printf("Invalid map file\n");
         return (1);
     }
+    if (!check_args(argc, argv))
+    {
+        printf("Invalid arguments\n");
+        return (1);
+    }
+    if (!check_valid_path(map))
+    {
+        printf("Invalid path in map\n");
+        return (1);
+    }
+    printf("Map parsed successfully\n");
     return (0);
 }

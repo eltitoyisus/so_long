@@ -14,18 +14,16 @@
 
 int key_hook(int keycode, t_game *game)
 {
-    find_player(&game->map);
-    if (keycode == KEY_ESC)
-        return(ft_close_map(game));
-    else if (game->map.e_check == 1)
-        return (0);
+    printf("Key pressed: %d\n", keycode);
+    if (keycode == KEY_W)
+        move_w(&game->map);
     else if (keycode == KEY_A)
         move_a(&game->map);
     else if (keycode == KEY_S)
         move_s(&game->map);
     else if (keycode == KEY_D)
         move_d(&game->map);
-    else if (keycode == KEY_W)
-        move_w(&game->map);
+    else if (keycode == KEY_ESC)
+        ft_close_map(game);
     return (0);
 }

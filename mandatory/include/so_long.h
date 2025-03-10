@@ -16,6 +16,7 @@
 # include "../../libft/libft.h"
 # include "../../minilibx/mlx.h"
 # include "../../minilibx/mlx_int.h"
+# include <stdbool.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include <errno.h>
@@ -77,7 +78,7 @@ char	**copy_map(char **map, int rows);
 void	find_player(t_map *map);
 void	move_on_paths(int x, int y, t_map *map);
 int		check_valid_path(t_map *map);
-int 	ft_parse_map(int argc, char **argv, t_map *map);
+int		ft_parse_map(int argc, char **argv, t_map *map);
 
 // KEYS
 int		key_hook(int keycode, t_game *game);
@@ -115,6 +116,10 @@ void	ft_free_game(t_game *game);
 int		check_extension(char *file);
 int		check_args(int argc, char **argv);
 int		check_file(char *file);
+
+// IS PLAYABLE
+int		is_playable(t_map *map);
+
 
 
 #endif

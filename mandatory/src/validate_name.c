@@ -17,9 +17,12 @@ int	check_extension(char *file)
 	int	len;
 
 	len = ft_strlen(file);
-	if (file[len - 4] == '.' && file[len - 3] == 'b' && file[len - 2] == 'e' && file[len - 1] == 'r')
-		return (1);
-	return (0);
+	if (len < 5)
+		return (0);
+	
+	if (ft_strncmp(&file[len - 4], ".ber", 4) != 0)
+		return (0);
+	return (1);
 }
 
 int	check_file(char *file)
