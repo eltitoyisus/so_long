@@ -16,13 +16,13 @@ int key_hook(int keycode, t_game *game)
 {
     printf("Key pressed: %d\n", keycode);
     if (keycode == KEY_W)
-        move_w(&game->map);
+        move_w(game);  // Pass the whole game struct
     else if (keycode == KEY_A)
-        move_a(&game->map);
+        move_a(game);
     else if (keycode == KEY_S)
-        move_s(&game->map);
+        move_s(game);
     else if (keycode == KEY_D)
-        move_d(&game->map);
+        move_d(game);
     else if (keycode == KEY_ESC)
         ft_close_map(game);
     return (0);

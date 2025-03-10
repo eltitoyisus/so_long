@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vbengea <vbengea@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:33:40 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/01/30 13:33:40 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:03:10 by vbengea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
-# define IMG_PXL 50
+# define IMG_PXL 64
 # define WND_NAME "so_long"
 
 typedef struct s_map
@@ -85,10 +85,10 @@ int		ft_parse_map(int argc, char **argv, t_map *map);
 int		key_hook(int keycode, t_game *game);
 
 // MOVEMENT
-void	move_a(t_map *map);
-void	move_s(t_map *map);
-void	move_d(t_map *map);
-void	move_w(t_map *map);
+void	move_a(t_game *game);
+void	move_s(t_game *game);
+void	move_d(t_game *game);
+void	move_w(t_game *game);
 
 // INIT MAP
 void	init_game(t_game *game);
@@ -102,7 +102,7 @@ void	draw_player(t_game *game);
 void	draw_collect(t_game *game);
 void	draw_exit(t_game *game);
 void	draw_background(t_game *game);
-void	draw_game(t_game *game);
+int     draw_game(t_game *game);
 void	draw_wall(t_game *game);
 
 // END MAP

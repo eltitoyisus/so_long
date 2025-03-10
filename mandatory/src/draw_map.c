@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vbengea <vbengea@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 10:56:08 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/03/03 10:56:08 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:05:31 by vbengea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,18 @@ void	draw_exit(t_game *game)
 	}
 }
 
-void draw_game(t_game *game)
+int draw_game(t_game *game)
 {
+	if (!game || !game->mlx || !game->win)
+		return (1);
+		
 	draw_background(game);
 	draw_map(game);
 	draw_player(game);
 	draw_collect(game);
 	draw_exit(game);
 	draw_wall(game);
+	return (0);
 }
 
 void draw_wall(t_game *game)
