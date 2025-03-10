@@ -18,16 +18,15 @@ void	init_game(t_game *game)
 	game->win = NULL;
 	init_map(&game->map);
 	init_player(&game->player);
-	// init_img(game);
 }
 
-void init_map(t_map *map)
+void	init_map(t_map *map)
 {
 	map->rows = 0;
 	map->cols = 0;
 	map->c = 0;
 	map->e = 0;
-	map->p = 0;  // Initialize the new player count
+	map->p = 0;
 	map->c_check = 0;
 	map->e_check = 0;
 	map->player_x = 0;
@@ -40,33 +39,20 @@ void	init_player(t_player *player)
 	player->y = 0;
 }
 
-// void	init_img(t_game *game)
-// {
-// 	game->image.img = mlx_xpm_file_to_image(game->mlx, "xmp/ground.xpm", &game->image.width, &game->image.height);
-// 	game->image.collect = mlx_xpm_file_to_image(game->mlx, "xmp/collect.xpm", &game->image.width, &game->image.height);
-// 	game->image.exit = mlx_xpm_file_to_image(game->mlx, "xmp/door.xpm", &game->image.width, &game->image.height);
-// 	game->image.player = mlx_xpm_file_to_image(game->mlx, "xmp/player.xpm", &game->image.width, &game->image.height);
-// 	game->image.wall = mlx_xpm_file_to_image(game->mlx, "xmp/wall.xpm", &game->image.width, &game->image.height);
-// }
-
-
-void init_img(t_game *game)
+void	init_img(t_game *game)
 {
 	int width;
 	int height;
 
 	if (!game || !game->mlx)
-		return;
-
+		return ;
 	width = IMG_PXL;
 	height = IMG_PXL;
-	
 	game->image.img = mlx_xpm_file_to_image(game->mlx, "mandatory/xmp/ground.xmp", &width, &height);
 	game->image.wall = mlx_xpm_file_to_image(game->mlx, "mandatory/xmp/wall.xmp", &width, &height);
 	game->image.collect = mlx_xpm_file_to_image(game->mlx, "mandatory/xmp/collect.xmp", &width, &height);
 	game->image.exit = mlx_xpm_file_to_image(game->mlx, "mandatory/xmp/door.xmp", &width, &height);
 	game->image.player = mlx_xpm_file_to_image(game->mlx, "mandatory/xmp/player.xmp", &width, &height);
-
 	if (!game->image.img || !game->image.wall || !game->image.collect || 
 		!game->image.exit || !game->image.player)
 	{

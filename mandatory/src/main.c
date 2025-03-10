@@ -12,50 +12,6 @@
 
 #include "../include/so_long.h"
 
-// int main(int argc, char **argv)
-// {
-//     t_game game;
-	
-//     // Initialize game structures
-//     init_game(&game);
-	
-//     printf("Parsing map...\n");
-//     if (ft_parse_map(argc, argv, &game.map) == 0)
-//     {
-//         printf("Map dimensions: %d rows x %d cols\n", game.map.rows, game.map.cols);
-		
-//         // Initialize player and images
-		
-//         // Initialize MLX
-//         if (!(game.mlx = mlx_init()))
-//         {
-//             ft_putstr_fd("Failed to initialize mlx\n", 2);
-//             return (1);
-//         }
-		
-//         // Create window with proper dimensions
-//         game.win = mlx_new_window(game.mlx, game.map.cols * IMG_PXL, 
-//                                   game.map.rows * IMG_PXL, WND_NAME);
-		
-//         init_img(&game);
-//         // init_player(&game.player);
-//         draw_game(&game);
-
-//         // Set up hooks and enter main loop
-//         mlx_hook(game.win, 2, 1L << 0, key_hook, &game);
-//         mlx_hook(game.win, 17, 1L << 17, ft_close_map, &game);
-//         mlx_loop_hook(game.mlx, draw_game, &game);
-//         mlx_loop(game.mlx);
-//     }
-//     else
-//     {
-//         ft_putstr_fd("Map parsing failed\n", 2);
-//         return (1);
-//     }
-	
-//     return (0);
-// }
-
 int main(int argc, char **argv)
 {
 	t_game game;
@@ -70,7 +26,14 @@ int main(int argc, char **argv)
 			ft_putstr_fd("Error: MLX initialization failed\n", 2);
 			return (1);
 		}
-		
+		mlx_get_screen_size(game.mlx, &game.screen_width, &game.screen_height);
+		if (game.map.cols * IMG_PXL > game.screen_width || 
+			game.map.rows * IMG_PXL > game.screen_height)
+		{
+			ft_putstr_fd("Error: Map too large for screen\n", 2);
+			ft_close_map(&game);
+			return (1);
+		}
 		game.win = mlx_new_window(game.mlx, game.map.cols * IMG_PXL, 
 								 game.map.rows * IMG_PXL, WND_NAME);
 		if (!game.win)
@@ -93,10 +56,7 @@ int main(int argc, char **argv)
 		ft_putstr_fd("Error: Map parsing failed\n", 2);
 		return (1);
 	}
+	free_game(&game);
+	ft_free_map(&game.map);
 	return (0);
-}
-
-int ft_max(int a, int b)
-{
-	return (a > b ? a : b);
 }

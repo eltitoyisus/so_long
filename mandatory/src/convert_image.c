@@ -18,13 +18,13 @@ void	xmp_convert(t_game *game)
 
 	a = IMG_PXL;
 	game->image.empty = mlx_xpm_file_to_image(game->mlx,
-		"mandatory/xmp/ground.xmp", &a, &a);
+			"mandatory/xmp/ground.xmp", &a, &a);
 	game->image.wall = mlx_xpm_file_to_image(game->mlx,
-		"mandatory/xmp/wall.xmp", &a, &a);
+			"mandatory/xmp/wall.xmp", &a, &a);
 	game->image.exit = mlx_xpm_file_to_image(game->mlx,
-		"mandatory/xmp/door.xmp", &a, &a);
+			"mandatory/xmp/door.xmp", &a, &a);
 	game->image.collect = mlx_xpm_file_to_image(game->mlx,
-		"mandatory/xmp/collect.xmp", &a, &a);
+			"mandatory/xmp/collect.xmp", &a, &a);
 	game->image.player = mlx_xpm_file_to_image(game->mlx,
-		"mandatory/xmp/player.xmp", &a, &a);
+			"mandatory/xmp/player.xmp", &a, &a);
 }

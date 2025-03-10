@@ -14,9 +14,9 @@
 
 int ft_close_map(t_game *game)
 {
-    ft_putstr_fd("Closing game\n", 1);
-    ft_free_game(game);
-    exit(0);
-    return (0);
+	ft_putstr_fd("Closing game\n", 1);
+	free_game(game);
+	ft_free_map(&game->map);
+	exit(0);
+	return (0);
 }
-

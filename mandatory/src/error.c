@@ -12,42 +12,71 @@
 
 #include "../include/so_long.h"
 
-void ft_free_map(t_map *map)
+void	ft_free_map(t_map *map)
 {
 	int i;
-
+	
 	i = 0;
-	while (i < map->rows)
+	if (map && map->map)
 	{
-		free(map->map[i]);
-		free(map->copy[i]);
-		i++;
+		while (i < map->rows && map->map[i])
+		{
+			free(map->map[i]);
+			map->map[i] = NULL;
+			i++;
+		}
+		free(map->map);
+		map->map = NULL;
 	}
-	free(map->map);
-	free(map->copy);
 }
 
-void	ft_free_game(t_game *game)
+void	destroy_img(void *mlx, void *img)
 {
-	ft_free_map(&game->map);
-	free(game->image.img);
-	free(game->image.collect);
-	free(game->image.exit);
-	free(game->image.player);
-	free(game->image.wall);
-	free(game->mlx);
-	free(game->win);
+	if (mlx && img)
+	{
+		mlx_destroy_image(mlx, img);
+		img = NULL;
+	}
 }
 
-void ft_free_array(char **array)
+static	void destroy_all_images(void *mlx, t_image *image)
 {
-	int i;
-
-	i = 0;
-	while (array[i])
+	if (mlx && image)
 	{
-		free(array[i]);
-		i++;
+		destroy_img(mlx, image->img);
+		destroy_img(mlx, image->empty);
+		destroy_img(mlx, image->wall);
+		destroy_img(mlx, image->exit);
+		destroy_img(mlx, image->collect);
+		destroy_img(mlx, image->player);
 	}
-	free(array);
+}
+
+static	void destroy_mlx_resources(void *mlx, void *win)
+{
+	if (mlx)
+	{
+		if (win)
+			mlx_destroy_window(mlx, win);
+		mlx_destroy_display(mlx);
+		free(mlx);
+	}
+}
+
+void	free_img(void *mlx, t_image *image)
+{
+	if (!mlx || !image)
+		return ;
+	destroy_all_images(mlx, image);
+}
+
+void free_game(t_game *game)
+{
+	if (!game)
+		return ;
+	if (game->mlx)
+	{
+		free_img(game->mlx, &game->image);
+		destroy_mlx_resources(game->mlx, game->win);
+	}
 }

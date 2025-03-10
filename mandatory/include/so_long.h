@@ -34,18 +34,18 @@
 
 typedef struct s_map
 {
-    char    **map;
-    char    **copy;
-    int     rows;
-    int     cols;
-    int     c;
-    int     e;
-    int     p;      // Add this line to track player count
-    int     c_check;
-    int     e_check;
-    int     player_x;
-    int     player_y;
-}   t_map;
+	char	**map;
+	char	**copy;
+	int		rows;
+	int		cols;
+	int		c;
+	int		e;
+	int		p;
+	int		c_check;
+	int		e_check;
+	int		player_x;
+	int		player_y;
+}	t_map;
 
 typedef struct s_player
 {
@@ -55,15 +55,15 @@ typedef struct s_player
 
 typedef struct s_image
 {
-    void    *img;
-    void    *empty;
-    void    *wall;
-    void    *exit;
-    void    *collect;
-    void    *player;
-    int     width;
-    int     height;
-}   t_image;
+	void	*img;
+	void	*empty;
+	void	*wall;
+	void	*exit;
+	void	*collect;
+	void	*player;
+	int		width;
+	int		height;
+}	t_image;
 
 typedef struct s_game
 {
@@ -72,6 +72,8 @@ typedef struct s_game
 	t_map		map;
 	t_image		image;
 	t_player	player;
+	int			screen_width;
+	int			screen_height;
 }	t_game;
 
 // MAP PARSE
@@ -102,7 +104,7 @@ void	draw_player(t_game *game);
 void	draw_collect(t_game *game);
 void	draw_exit(t_game *game);
 void	draw_background(t_game *game);
-int     draw_game(t_game *game);
+int		draw_game(t_game *game);
 void	draw_wall(t_game *game);
 
 // END MAP
@@ -110,7 +112,7 @@ int		ft_close_map(t_game *game);
 
 // ERROR AND FREE
 void	ft_free_map(t_map *map);
-void	ft_free_game(t_game *game);
+void	free_game(t_game *game);
 
 // MAP NAME PARSE
 
@@ -119,9 +121,8 @@ int		check_args(int argc, char **argv);
 int		check_file(char *file);
 
 // IS PLAYABLE
-int		is_playable(t_map *map);
-int load_map_from_file(char *filename, t_map *map);
-int ft_max(int a, int b);
-
+int		load_map_from_file(char *filename, t_map *map);
+void	free_img(void *mlx, t_image *image);
+void	destroy_img(void *mlx, void *img);
 
 #endif

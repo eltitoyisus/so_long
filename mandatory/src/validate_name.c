@@ -14,34 +14,32 @@
 
 int check_extension(char *filename)
 {
-    int len;
-    
-    if (!filename)
-        return (0);
-    len = ft_strlen(filename);
-    if (len < 5) // Need at least ".ber" (4 chars) plus at least 1 char for name
-        return (0);
-    
-    // Compare the last 4 characters with ".ber"
-    return (ft_strncmp(&filename[len - 4], ".ber", 4) == 0);
+	int len;
+	
+	if (!filename)
+		return (0);
+	len = ft_strlen(filename);
+	if (len < 5)
+		return (0);
+	return (ft_strncmp(&filename[len - 4], ".ber", 4) == 0);
 }
 
 int	check_file(char *file)
 {
-    int		fd;
-    char	*line;
+	int		fd;
+	char	*line;
 
-    fd = open(file, O_RDONLY);
-    if (fd < 0)
-        return (0);
-    line = get_next_line(fd);
-    while (line)
-    {
-        free(line);
-        line = get_next_line(fd);
-    }
-    close(fd);
-    return (1);
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		return (0);
+	line = get_next_line(fd);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (1);
 }
 
 int	check_args(int argc, char **argv)
