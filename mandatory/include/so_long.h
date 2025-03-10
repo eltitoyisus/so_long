@@ -34,17 +34,18 @@
 
 typedef struct s_map
 {
-	char	**map;
-	char	**copy;
-	int		rows;
-	int		cols;
-	int		c;
-	int		e;
-	int		c_check;
-	int		e_check;
-	int		player_x;
-	int		player_y;
-}	t_map;
+    char    **map;
+    char    **copy;
+    int     rows;
+    int     cols;
+    int     c;
+    int     e;
+    int     p;      // Add this line to track player count
+    int     c_check;
+    int     e_check;
+    int     player_x;
+    int     player_y;
+}   t_map;
 
 typedef struct s_player
 {
@@ -100,9 +101,9 @@ void	draw_map(t_game *game);
 void	draw_player(t_game *game);
 void	draw_collect(t_game *game);
 void	draw_exit(t_game *game);
-void	draw_images(t_game *game);
 void	draw_background(t_game *game);
 void	draw_game(t_game *game);
+void	draw_wall(t_game *game);
 
 // END MAP
 int		ft_close_map(t_game *game);
@@ -113,13 +114,14 @@ void	ft_free_game(t_game *game);
 
 // MAP NAME PARSE
 
-int		check_extension(char *file);
+int		check_extension(char *filename);
 int		check_args(int argc, char **argv);
 int		check_file(char *file);
 
 // IS PLAYABLE
 int		is_playable(t_map *map);
-
+int load_map_from_file(char *filename, t_map *map);
+int ft_max(int a, int b);
 
 
 #endif

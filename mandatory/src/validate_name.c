@@ -12,17 +12,18 @@
 
 #include "../include/so_long.h"
 
-int	check_extension(char *file)
+int check_extension(char *filename)
 {
-	int	len;
-
-	len = ft_strlen(file);
-	if (len < 5)
-		return (0);
-	
-	if (ft_strncmp(&file[len - 4], ".ber", 4) != 0)
-		return (0);
-	return (1);
+    int len;
+    
+    if (!filename)
+        return (0);
+    len = ft_strlen(filename);
+    if (len < 5) // Need at least ".ber" (4 chars) plus at least 1 char for name
+        return (0);
+    
+    // Compare the last 4 characters with ".ber"
+    return (ft_strncmp(&filename[len - 4], ".ber", 4) == 0);
 }
 
 int	check_file(char *file)

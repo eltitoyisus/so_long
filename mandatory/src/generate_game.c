@@ -24,26 +24,13 @@ void	draw_map(t_game *game)
 		while (x < game->map.cols)
 		{
 			if (game->map.map[y][x] == '1')
-				mlx_put_image_to_window(game->mlx, game->win, game->image.wall, x * 32, y * 32);
-			else if (game->map.map[y][x] == '0')
-				mlx_put_image_to_window(game->mlx, game->win, game->image.img, x * 32, y * 32);
+				draw_wall(game);
 			else if (game->map.map[y][x] == 'C')
-				mlx_put_image_to_window(game->mlx, game->win, game->image.collect, x * 32, y * 32);
+				draw_collect(game);
 			else if (game->map.map[y][x] == 'E')
-				mlx_put_image_to_window(game->mlx, game->win, game->image.exit, x * 32, y * 32);
-			else if (game->map.map[y][x] == 'P')
-				mlx_put_image_to_window(game->mlx, game->win, game->image.player, x * 32, y * 32);
+				draw_exit(game);
 			x++;
 		}
 		y++;
 	}
-}
-
-void	draw_game(t_game *game)
-{
-	draw_background(game);
-	draw_map(game);
-	draw_player(game);
-	draw_collect(game);
-	draw_exit(game);
 }

@@ -55,13 +55,33 @@ void	draw_exit(t_game *game)
 	}
 }
 
-void	draw_images(t_game *game)
+void draw_game(t_game *game)
 {
-	game->image.img = mlx_xpm_file_to_image(game->mlx, "textures/ground.xpm", &game->image.width, &game->image.height);
-	game->image.collect = mlx_xpm_file_to_image(game->mlx, "textures/collect.xpm", &game->image.width, &game->image.height);
-	game->image.exit = mlx_xpm_file_to_image(game->mlx, "textures/exit.xpm", &game->image.width, &game->image.height);
-	game->image.player = mlx_xpm_file_to_image(game->mlx, "textures/player.xpm", &game->image.width, &game->image.height);
-	game->image.wall = mlx_xpm_file_to_image(game->mlx, "textures/wall.xpm", &game->image.width, &game->image.height);
+	draw_background(game);
+	draw_map(game);
+	draw_player(game);
+	draw_collect(game);
+	draw_exit(game);
+	draw_wall(game);
+}
+
+void draw_wall(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < game->map.rows)
+	{
+		x = 0;
+		while (x < game->map.cols)
+		{
+			if (game->map.map[y][x] == '1')
+				mlx_put_image_to_window(game->mlx, game->win, game->image.wall, x * 32, y * 32);
+			x++;
+		}
+		y++;
+	}
 }
 
 void	draw_background(t_game *game)
