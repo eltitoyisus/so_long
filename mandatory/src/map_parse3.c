@@ -101,7 +101,12 @@ int	check_map(t_map *map)
 		return (0);
 	if (!no_collectibles(map))
 	{
-		ft_putstr_fd("Error\nNo collectibles\n", 2);
+		ft_putstr_fd("No collectibles\n", 2);
+		return (0);
+	}
+	if (!surrounded_by_walls(map))
+	{
+		ft_putstr_fd("Map not surrounded by walls\n", 2);
 		return (0);
 	}
 	return (1);

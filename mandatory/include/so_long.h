@@ -133,5 +133,7 @@ int		no_collectibles(t_map *map);
 int		one_exit(t_map *map);
 int		one_player(t_map *map);
 int		check_map(t_map *map);
+int		surrounded_by_walls(t_map *map);
+
 
 #endif
