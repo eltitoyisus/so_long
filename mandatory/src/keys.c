@@ -32,7 +32,9 @@ int	key_hook(int keycode, t_game *game)
 	if (game->player.x != prev_x || game->player.y != prev_y)
 	{
 		game->moves++;
-		printf("Movimientos: %d\n", game->moves);
+		ft_putstr_fd("Movimientos: ", 1);
+		ft_putnbr_fd(game->moves, 1);
+		ft_putchar_fd('\n', 1);
 	}
 	return (0);
 }

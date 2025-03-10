@@ -113,24 +113,24 @@ int	ft_parse_map(int argc, char **argv, t_map *map)
 	(void)argc;
 	if (!check_extension(argv[1]))
 	{
-		printf("Invalid file extension\n");
+		ft_putstr_fd("Invalid file extension\n", 2);
 		return (1);
 	}
 	if (!load_map_from_file(argv[1], map))
 	{
-		printf("Failed to load map from file\n");
+		ft_putstr_fd("Failed to load map from file\n", 2);
 		return (1);
 	}
 	if (check_map(map) == 0)
 	{
-		printf("Invalid map\n");
+		ft_putstr_fd("Invalid map\n", 2);
 		return (1);
 	}
 	if (check_valid_path(map) != 0)
 	{
-		printf("Invalid path in map\n");
+		ft_putstr_fd("Invalid path in map\n", 2);
 		return (1);
 	}
-	printf("Map parsed successfully\n");
+	ft_putstr_fd("Map parsed successfully\n", 1);
 	return (0);
 }
