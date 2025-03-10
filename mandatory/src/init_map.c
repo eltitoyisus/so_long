@@ -42,9 +42,9 @@ void	init_player(t_player *player)
 
 void	init_img(t_game *game)
 {
-	game->image.img = mlx_xpm_file_to_image(game->mlx, "../xmp/ground.xpm", &game->image.width, &game->image.height);
-	game->image.collect = mlx_xpm_file_to_image(game->mlx, "../xmp/collect.xpm", &game->image.width, &game->image.height);
-	game->image.exit = mlx_xpm_file_to_image(game->mlx, "../xmp/door.xpm", &game->image.width, &game->image.height);
-	game->image.player = mlx_xpm_file_to_image(game->mlx, "../xmp/player.xpm", &game->image.width, &game->image.height);
-	game->image.wall = mlx_xpm_file_to_image(game->mlx, "../xmp/wall.xpm", &game->image.width, &game->image.height);
+	game->image.img = mlx_xpm_file_to_image(game->mlx, "xmp/ground.xpm", &game->image.width, &game->image.height);
+	game->image.collect = mlx_xpm_file_to_image(game->mlx, "xmp/collect.xpm", &game->image.width, &game->image.height);
+	game->image.exit = mlx_xpm_file_to_image(game->mlx, "xmp/door.xpm", &game->image.width, &game->image.height);
+	game->image.player = mlx_xpm_file_to_image(game->mlx, "xmp/player.xpm", &game->image.width, &game->image.height);
+	game->image.wall = mlx_xpm_file_to_image(game->mlx, "xmp/wall.xpm", &game->image.width, &game->image.height);
 }
