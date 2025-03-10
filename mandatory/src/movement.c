@@ -26,7 +26,7 @@ void	move_a(t_game *game)
 			ft_close_map(game);
 		}
 	}
-	else if (game->map.map[game->map.player_y][game->map.player_x - 1] == '0' 
+	else if (game->map.map[game->map.player_y][game->map.player_x - 1] == '0'
 		|| game->map.map[game->map.player_y][game->map.player_x - 1] == 'C')
 	{
 		if (game->map.map[game->map.player_y][game->map.player_x - 1] == 'C')

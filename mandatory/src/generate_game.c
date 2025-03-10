@@ -35,6 +35,24 @@ void	draw_map(t_game *game)
 	}
 }
 
+static	void	draw_tile(t_game *game, int x, int y)
+{
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->image.img, x * IMG_PXL, y * IMG_PXL);
+	if (game->map.map[y][x] == '1')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->image.wall, x * IMG_PXL, y * IMG_PXL);
+	else if (game->map.map[y][x] == 'C')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->image.collect, x * IMG_PXL, y * IMG_PXL);
+	else if (game->map.map[y][x] == 'E')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->image.exit, x * IMG_PXL, y * IMG_PXL);
+	else if (game->map.map[y][x] == 'P')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->image.player, x * IMG_PXL, y * IMG_PXL);
+}
+
 int	draw_game(t_game *game)
 {
 	int	x;
@@ -48,12 +66,7 @@ int	draw_game(t_game *game)
 		x = 0;
 		while (x < game->map.cols)
 		{
-			mlx_put_image_to_window(game->mlx, game->win,
-				game->image.img, x * IMG_PXL, y * IMG_PXL);
-			draw_wall(game);
-			draw_player(game);
-			draw_collect(game);
-			draw_exit(game);
+			draw_tile(game, x, y);
 			x++;
 		}
 		y++;

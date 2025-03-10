@@ -121,8 +121,12 @@ int		check_args(int argc, char **argv);
 int		check_file(char *file);
 
 // IS PLAYABLE
-int		load_map_from_file(char *filename, t_map *map);
 void	free_img(void *mlx, t_image *image);
 void	destroy_img(void *mlx, void *img);
+int		get_map_dimensions(char *filename, t_map *map);
+int		initialize_map_memory(t_map *map);
+int		read_map_from_file(char *filename, t_map *map);
+int		load_map_content(char *filename, t_map *map);
+int		load_map_from_file(char *filename, t_map *map);
 
 #endif

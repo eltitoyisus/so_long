@@ -12,10 +12,10 @@
 
 #include "../include/so_long.h"
 
-int check_extension(char *filename)
+int	check_extension(char *filename)
 {
-	int len;
-	
+	int	len;
+
 	if (!filename)
 		return (0);
 	len = ft_strlen(filename);

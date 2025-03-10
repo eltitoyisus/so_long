@@ -30,6 +30,8 @@ SRCS = $(SRC_DIR)main.c        \
 		$(SRC_DIR)init_map.c \
 		$(SRC_DIR)keys.c \
 		$(SRC_DIR)validate_name.c \
+		$(SRC_DIR)map_parse2.c \
+		$(SRC_DIR)map_parse3.c
 
 OBJS = $(SRCS:.c=.o)
 

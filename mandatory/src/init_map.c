@@ -58,8 +58,8 @@ void	init_img(t_game *game)
 			"mandatory/xmp/door.xmp", &width, &height);
 	game->image.player = mlx_xpm_file_to_image(game->mlx,
 			"mandatory/xmp/player.xmp", &width, &height);
-	if (!game->image.wall || !game->image.collect ||
-		!game->image.exit || !game->image.player)
+	if (!game->image.img || !game->image.wall || !game->image.collect
+		|| !game->image.exit || !game->image.player)
 	{
 		ft_putstr_fd("Error: Failed to load one or more images\n", 2);
 		ft_close_map(game);
