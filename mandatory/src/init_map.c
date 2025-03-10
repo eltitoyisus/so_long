@@ -16,6 +16,7 @@ void	init_game(t_game *game)
 {
 	game->mlx = NULL;
 	game->win = NULL;
+	game->moves = 0;
 	init_map(&game->map);
 	init_player(&game->player);
 }

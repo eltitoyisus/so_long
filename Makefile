@@ -48,11 +48,11 @@ $(NAME): $(OBJS) libft/libft.a minilibx/libmlx.a
 
 clean:
 	@$(RM) $(OBJS) 
-	@ cd libft && make clean > /dev/null
-	@ cd minilibx && make clean > /dev/null
+	@ cd libft && make clean
+	@ cd minilibx && make clean
 
 fclean: clean
 	@$(RM) $(NAME)
-	@ cd libft && make fclean > /dev/null
+	@ cd libft && make fclean
 
 re: fclean all

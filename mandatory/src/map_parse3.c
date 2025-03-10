@@ -20,3 +20,89 @@ int	load_map_content(char *filename, t_map *map)
 		return (0);
 	return (1);
 }
+
+int	no_collectibles(t_map *map)
+{
+	int	i;
+	int	j;
+	int	collectibles;
+
+	collectibles = 0;
+	i = 0;
+	while (i < map->rows)
+	{
+		j = 0;
+		while (j < map->cols)
+		{
+			if (map->map[i][j] == 'C')
+				collectibles++;
+			j++;
+		}
+		i++;
+	}
+	if (collectibles == 0)
+		return (0);
+	return (1);
+}
+
+int	one_exit(t_map *map)
+{
+	int	i;
+	int	j;
+	int	exit;
+
+	exit = 0;
+	i = 0;
+	while (i < map->rows)
+	{
+		j = 0;
+		while (j < map->cols)
+		{
+			if (map->map[i][j] == 'E')
+				exit++;
+			j++;
+		}
+		i++;
+	}
+	if (exit != 1)
+		return (0);
+	return (1);
+}
+
+int	one_player(t_map *map)
+{
+	int	i;
+	int	j;
+	int	player;
+
+	player = 0;
+	i = 0;
+	while (i < map->rows)
+	{
+		j = 0;
+		while (j < map->cols)
+		{
+			if (map->map[i][j] == 'P')
+				player++;
+			j++;
+		}
+		i++;
+	}
+	if (player != 1)
+		return (0);
+	return (1);
+}
+
+int	check_map(t_map *map)
+{
+	if (!one_player(map))
+		return (0);
+	if (!one_exit(map))
+		return (0);
+	if (!no_collectibles(map))
+	{
+		ft_putstr_fd("Error\nNo collectibles\n", 2);
+		return (0);
+	}
+	return (1);
+}

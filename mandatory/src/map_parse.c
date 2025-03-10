@@ -110,7 +110,7 @@ int	check_valid_path(t_map *map)
 
 int	ft_parse_map(int argc, char **argv, t_map *map)
 {
-	printf("Parsing map with argc: %d, argv[1]: %s\n", argc, argv[1]);
+	(void)argc;
 	if (!check_extension(argv[1]))
 	{
 		printf("Invalid file extension\n");
@@ -119,6 +119,11 @@ int	ft_parse_map(int argc, char **argv, t_map *map)
 	if (!load_map_from_file(argv[1], map))
 	{
 		printf("Failed to load map from file\n");
+		return (1);
+	}
+	if (check_map(map) == 0)
+	{
+		printf("Invalid map\n");
 		return (1);
 	}
 	if (check_valid_path(map) != 0)

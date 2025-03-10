@@ -74,6 +74,7 @@ typedef struct s_game
 	t_player	player;
 	int			screen_width;
 	int			screen_height;
+	int			moves;
 }	t_game;
 
 // MAP PARSE
@@ -128,5 +129,9 @@ int		initialize_map_memory(t_map *map);
 int		read_map_from_file(char *filename, t_map *map);
 int		load_map_content(char *filename, t_map *map);
 int		load_map_from_file(char *filename, t_map *map);
+int		no_collectibles(t_map *map);
+int		one_exit(t_map *map);
+int		one_player(t_map *map);
+int		check_map(t_map *map);
 
 #endif

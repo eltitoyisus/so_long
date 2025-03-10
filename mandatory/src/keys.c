@@ -14,7 +14,11 @@
 
 int	key_hook(int keycode, t_game *game)
 {
-	printf("Key pressed: %d\n", keycode);
+	int	prev_x;
+	int	prev_y;
+
+	prev_x = game->player.x;
+	prev_y = game->player.y;
 	if (keycode == KEY_W)
 		move_w(game);
 	else if (keycode == KEY_A)
@@ -25,5 +29,10 @@ int	key_hook(int keycode, t_game *game)
 		move_d(game);
 	else if (keycode == KEY_ESC)
 		ft_close_map(game);
+	if (game->player.x != prev_x || game->player.y != prev_y)
+	{
+		game->moves++;
+		printf("Movimientos: %d\n", game->moves);
+	}
 	return (0);
 }
