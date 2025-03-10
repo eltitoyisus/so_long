@@ -34,3 +34,29 @@ void	draw_map(t_game *game)
 		y++;
 	}
 }
+
+int	draw_game(t_game *game)
+{
+	int	x;
+	int	y;
+
+	if (!game || !game->mlx || !game->win)
+		return (1);
+	y = 0;
+	while (y < game->map.rows)
+	{
+		x = 0;
+		while (x < game->map.cols)
+		{
+			mlx_put_image_to_window(game->mlx, game->win,
+				game->image.img, x * IMG_PXL, y * IMG_PXL);
+			draw_wall(game);
+			draw_player(game);
+			draw_collect(game);
+			draw_exit(game);
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}

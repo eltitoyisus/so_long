@@ -41,19 +41,24 @@ void	init_player(t_player *player)
 
 void	init_img(t_game *game)
 {
-	int width;
-	int height;
+	int	width;
+	int	height;
 
 	if (!game || !game->mlx)
 		return ;
 	width = IMG_PXL;
 	height = IMG_PXL;
-	game->image.img = mlx_xpm_file_to_image(game->mlx, "mandatory/xmp/ground.xmp", &width, &height);
-	game->image.wall = mlx_xpm_file_to_image(game->mlx, "mandatory/xmp/wall.xmp", &width, &height);
-	game->image.collect = mlx_xpm_file_to_image(game->mlx, "mandatory/xmp/collect.xmp", &width, &height);
-	game->image.exit = mlx_xpm_file_to_image(game->mlx, "mandatory/xmp/door.xmp", &width, &height);
-	game->image.player = mlx_xpm_file_to_image(game->mlx, "mandatory/xmp/player.xmp", &width, &height);
-	if (!game->image.img || !game->image.wall || !game->image.collect || 
+	game->image.img = mlx_xpm_file_to_image(game->mlx,
+			"mandatory/xmp/ground.xmp", &width, &height);
+	game->image.wall = mlx_xpm_file_to_image(game->mlx,
+			"mandatory/xmp/wall.xmp", &width, &height);
+	game->image.collect = mlx_xpm_file_to_image(game->mlx,
+			"mandatory/xmp/collect.xmp", &width, &height);
+	game->image.exit = mlx_xpm_file_to_image(game->mlx,
+			"mandatory/xmp/door.xmp", &width, &height);
+	game->image.player = mlx_xpm_file_to_image(game->mlx,
+			"mandatory/xmp/player.xmp", &width, &height);
+	if (!game->image.wall || !game->image.collect ||
 		!game->image.exit || !game->image.player)
 	{
 		ft_putstr_fd("Error: Failed to load one or more images\n", 2);
